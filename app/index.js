@@ -9,14 +9,18 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import { useRouter } from 'expo-router'; 
 
 export default function LoginScreen() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const router = useRouter(); //Initialize router
+
   const handleLogin = () => {
     if (username === 'admin' && password === 'password') {
       Alert.alert('Login Successful', `Welcome, ${username}!`);
+      router.push('/loginSuccess');
     } else {
       Alert.alert('Login Failed', 'Invalid username or password.');
     }
@@ -27,7 +31,7 @@ export default function LoginScreen() {
   };
 
   const handleSignUp = () => {
-    Alert.alert('Sign Up sent');
+    router.push('/SignUpScreen');
   };
 
   return (
